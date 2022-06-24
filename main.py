@@ -57,21 +57,24 @@ def main():
 
     running = True
     count = 0
-    dots = 20000
-
+    dots = 35000
+    i = 0
     window.fill(white)
     while running:
         if count < dots:
             pg.draw.circle(window, black, convert(point, side_len, offset, HEIGHT), 1)
             point = generate(point, [p1, p2, p3])
             count += 1
+            i += 1
+        else:
+            print("Done")
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 pg.quit()
                 quit()
-
-        pg.display.update()
-        clock.tick(60)
+        if i % 16 == 0:
+            pg.display.update()
+            clock.tick(60)
 
 
 if __name__ == "__main__":
